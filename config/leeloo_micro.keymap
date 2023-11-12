@@ -99,7 +99,7 @@
             compatible = "zmk,behavior-mod-morph";
             label = "QUESTION_EXCLAMATION";
             #binding-cells = <0>;
-            bindings = <&mt RCTRL QMARK>, <&kp EXCL>;
+            bindings = <&kp QMARK>, <&kp EXCL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         bsp2del: bspc_l2_del {
@@ -171,7 +171,7 @@
             bindings = <
 &kp TAB    &trans     &trans     &trans       &kp K_CMENU                         &kp PG_UP  &kp HOME   &kp UP     &kp END    &kp PSCRN
 &kp CAPS   &trans     &trans     &kp LA(LEFT) &kp LA(RIGHT)                       &kp PG_DN  &kp LEFT   &kp DOWN   &kp RIGHT  &kp INS
-&trans     &trans     &trans     &trans       &trans        &trans     &trans     &trans     &trans     &trans     &trans     &mt RSFT TILDE
+&kp LC(Z)  &trans     &trans     &trans       &trans        &trans     &trans     &trans     &trans     &trans     &trans     &mt RSFT TILDE
                       &trans     &trans       &trans        &trans     &trans     &trans     &kp DEL    &trans
             >;
 
@@ -183,8 +183,8 @@
             bindings = <
 
 &kp F1     &kp F2     &kp F3     &kp F4     &kp F5                           &kp F6     &kp F7     &kp F8     &kp F9     &kp F10
-&kp BRIUP  &kp BRIDN  &kp F8     &kp F9     &kp F10                          &trans     &trans     &trans     &kp F11    &kp F12
-&kp VOLMT  &kp VOLUP  &kp VOLDN  &kp K_PP   &kp K_NEXT &trans     &trans     &trans     &trans     &trans     &trans     &trans
+&kp BRIDN  &kp BRIUP  &trans     &trans     &trans                           &trans     &trans     &trans     &kp F11    &kp F12
+&kp VOLMT  &kp VOLDN  &kp VOLUP  &kp K_PP   &kp K_NEXT &trans     &trans     &trans     &trans     &trans     &trans     &trans
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &kp K_EJECT
             >;
 
