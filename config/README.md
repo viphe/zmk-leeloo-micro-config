@@ -37,8 +37,8 @@ west build -d build/right -p -b nice_nano_v2 -- -DSHIELD=leeloo_micro_rev2_right
 Build commands for your custom keymap of Leeloo-Micro:
 
 ```
-west build -d build/right -p -b nice_nano_v2 -- -DSHIELD=leeloo_micro_rev2_left -DZMK_CONFIG="C:/dev/zmk/[yourName]/leeloo_micro/config"
-west build -d build/left -p -b nice_nano_v2 -- -DSHIELD=leeloo_micro_rev2_right -DZMK_CONFIG="C:/dev/zmk/[yourName]/leeloo_micro/config"
+west build -d build/right -p -b nice_nano_v2 -- -DSHIELD=leeloo_micro_rev2_right -DZMK_CONFIG="C:/dev/zmk/[yourName]/leeloo_micro/config"
+west build -d build/left -p -b nice_nano_v2 -- -DSHIELD=leeloo_micro_rev2_left -DZMK_CONFIG="C:/dev/zmk/[yourName]/leeloo_micro/config"
 ```
 
 ## Building Leeloo-Micro's ZMK Firmware with nice!view Displays

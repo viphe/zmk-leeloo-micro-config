@@ -32,6 +32,9 @@
 #define VOLDN   C_VOL_DN
 #define VOLMT   C_MUTE
 
+#define BRIUP   C_BRI_UP
+#define BRIDN   C_BRI_DN
+
 #define RGBON   &rgb_ug RGB_ON
 #define RGBOFF  &rgb_ug RGB_OFF
 #define RGBTOG  &rgb_ug RGB_TOG
@@ -65,11 +68,74 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_win_esc {
+        combo_esc {
             timeout-ms = <50>;
             key-positions = <0 1>;
             layers = <CDH_M>;
             bindings = <&kp ESC>;
+        };
+        combo_mac_cut {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            layers = <CDH_M>;
+            bindings = <&kp RG(X)>;
+        };
+        combo_mac_copy {
+            timeout-ms = <50>;
+            key-positions = <22 23>;
+            layers = <CDH_M>;
+            bindings = <&kp RG(C)>;
+        };
+        combo_mac_paste {
+            timeout-ms = <50>;
+            key-positions = <23 24>;
+            layers = <CDH_M>;
+            bindings = <&kp RG(V)>;
+        };
+    };
+
+    behaviors {
+        qmexc: qmark_excl {
+            compatible = "zmk,behavior-mod-morph";
+            label = "QUESTION_EXCLAMATION";
+            #binding-cells = <0>;
+            bindings = <&mt RCTRL QMARK>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        bsp2del: bspc_l2_del {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_L2_DELETE";
+            #binding-cells = <0>;
+            bindings = <&lt 2 BSPC>, <&kp DEL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        comsem: comma_semi {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_SEMI_COLON";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        dotcol: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_COLON";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        fslbsl: fslh_bslh {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SLASH_BACKSLASH";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp BSLH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        spc1und: spc1_under {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SPACE_L1_UNDERSCORE";
+            #binding-cells = <0>;
+            bindings = <&lt 1 SPACE>, <&kp UNDERSCORE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
@@ -79,47 +145,47 @@
         default_CDH_layer {
             label = " COLEMAK";
             bindings = <
-&kp Q      &kp W      &kp F      &kp P      &kp B                            &kp J      &kp L      &kp U      &kp Y      &kp SEMI
-&kp A      &kp R      &kp S      &kp T      &kp G                            &kp M      &kp N      &kp E      &kp I      &kp O
-&mt LSFT Z &kp X      &kp C      &kp D      &kp V     &mo CDH_N   &kp RGUI   &kp K      &kp H      &kp COMMA  &kp DOT    &mt RSFT FSLH
-                  &kp LALT   &kp LCTRL  &lt 1 RET  &lt 2 MINUS    &lt 2 EQUAL  &lt 1 SPACE  &kp BSPC   &mo CDH_B
+&kp Q       &kp W      &kp F      &kp P      &kp B                            &kp J      &kp L      &kp U      &kp Y      &fslbsl
+&kp A       &kp R      &kp S      &kp T      &kp G                            &kp M      &kp N      &kp E      &kp I      &kp O
+&mt LCTRL Z &kp X      &kp C      &kp D      &kp V     &mo CDH_N   &kp RGUI   &kp K      &kp H      &comsem    &dotcol    &qmexc
+                       &kp LALT   &kp LGUI   &kp LSFT  &bsp2del    &lt 2 RET  &spc1und   &kp RALT   &lt 5 SQT
             >;
 
-            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp RIGHT LEFT>;
         };
 
         lower_CDH_layer {
             label = " Lower";
             bindings = <
-&kp N1     &kp N2     &kp N3     &kp N4     &kp N5                           &kp N6     &kp N7     &kp N8     &kp N9     &kp N0
-&trans     &trans     &trans     &trans     &trans                           &trans     &trans     &trans     &trans     &kp QUOT
-&kp LSHFT  &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &kp RSHFT
-                      &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
+&kp GRAVE  &kp N7     &kp N8     &kp N9     &kp AMPS                         &kp LPAR   &kp RPAR   &kp HASH   &kp PRCNT  &kp FSLH
+&kp AT     &kp N4     &kp N5     &kp N6     &kp DLLR                         &kp PLUS   &kp MINUS  &kp STAR   &kp CARET  &kp EQUAL
+&kp LCTRL  &kp N1     &kp N2     &kp N3     &kp N0     &trans     &trans     &kp LBKT   &kp RBKT   &kp LT     &kp GT     &kp PIPE
+                      &trans     &trans     &trans     &kp BSPC   &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp LA(TAB) LS(LA(TAB))>;
         };
 
         raise_CDH_layer {
             label = " Raise";
             bindings = <
-&kp TAB    &trans     &trans     &trans     &trans                           &kp PG_UP  &kp HOME   &kp UP     &kp END    &kp BSLH
-&kp CAPS   &trans     &trans     &trans     &trans                           &kp PG_DN  &kp LEFT   &kp DOWN   &kp RIGHT  &kp GRAVE
-&trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &mt RSFT TILDE
-                      &trans     &trans     &trans     &trans     &trans     &trans     &kp DEL    &trans
+&kp TAB    &trans     &trans     &trans       &kp K_CMENU                         &kp PG_UP  &kp HOME   &kp UP     &kp END    &kp PSCRN
+&kp CAPS   &trans     &trans     &kp LA(LEFT) &kp LA(RIGHT)                       &kp PG_DN  &kp LEFT   &kp DOWN   &kp RIGHT  &kp INS
+&trans     &trans     &trans     &trans       &trans        &trans     &trans     &trans     &trans     &trans     &trans     &mt RSFT TILDE
+                      &trans     &trans       &trans        &trans     &trans     &trans     &kp DEL    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp DOWN UP>;
         };
 
         adjust_CDH_layer {
             label = " Adjust";
             bindings = <
 
-&kp F1     &kp F2     &kp F3     &kp F4     &kp F5                           &trans     &trans     &kp VOLUP  &trans     &trans
-&kp F6     &kp F7     &kp F8     &kp F9     &kp F10                          &trans     &trans     &kp VOLDN  &trans     &trans
-&kp F11    &kp F12    &trans     &trans     &trans     &trans     &trans     &trans     &kp VOLMT  &trans     &trans     &trans
-                      &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
+&kp F1     &kp F2     &kp F3     &kp F4     &kp F5                           &kp F6     &kp F7     &kp F8     &kp F9     &kp F10
+&kp BRIUP  &kp BRIDN  &kp F8     &kp F9     &kp F10                          &trans     &trans     &trans     &kp F11    &kp F12
+&kp VOLMT  &kp VOLUP  &kp VOLDN  &kp K_PP   &kp K_NEXT &trans     &trans     &trans     &trans     &trans     &trans     &trans
+                      &trans     &trans     &trans     &trans     &trans     &trans     &trans     &kp K_EJECT
             >;
 
             sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp C_VOL_UP C_VOL_DN>;
