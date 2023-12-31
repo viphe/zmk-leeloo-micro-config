@@ -163,16 +163,16 @@
                       &trans     &trans     &trans     &kp BSPC   &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp LA(TAB) LS(LA(TAB))>;
+            sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp LG(TAB) LS(LG(TAB))>;
         };
 
         raise_CDH_layer {
             label = " Raise";
             bindings = <
-&kp TAB    &trans     &trans     &trans       &kp K_CMENU                         &kp PG_UP  &kp HOME   &kp UP     &kp END    &kp PSCRN
-&kp CAPS   &trans     &trans     &kp LA(LEFT) &kp LA(RIGHT)                       &kp PG_DN  &kp LEFT   &kp DOWN   &kp RIGHT  &kp INS
-&kp LC(Z)  &trans     &trans     &trans       &trans        &trans     &trans     &trans     &trans     &trans     &trans     &mt RSFT TILDE
-                      &trans     &trans       &trans        &trans     &trans     &trans     &kp DEL    &trans
+&trans     &trans     &trans     &trans           &kp K_CMENU                             &kp PG_UP  &kp HOME     &kp UP     &kp END        &kp PSCRN
+&kp TAB    &trans     &trans     &kp LA(LG(LEFT)) &kp LA(LG(RIGHT))                       &kp PG_DN  &kp LEFT     &kp DOWN   &kp RIGHT      &kp INS
+&kp LC(Z)  &trans     &trans     &trans           &trans            &trans     &trans     &trans     &kp LA(LEFT) &trans     &kp LA(RIGHT)  &mt RSFT TILDE
+                      &trans     &trans           &trans            &trans     &trans     &trans     &kp DEL    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp &none &none &inc_dec_kp DOWN UP>;
@@ -184,7 +184,7 @@
 
 &kp F1     &kp F2     &kp F3     &kp F4     &kp F5                           &kp F6     &kp F7     &kp F8     &kp F9     &kp F10
 &kp BRIDN  &kp BRIUP  &trans     &trans     &trans                           &trans     &trans     &trans     &kp F11    &kp F12
-&kp VOLMT  &kp VOLDN  &kp VOLUP  &kp K_PP   &kp K_NEXT &trans     &trans     &trans     &trans     &trans     &trans     &trans
+&kp VOLMT  &kp VOLDN  &kp VOLUP  &kp C_PP   &kp C_NEXT &trans     &trans     &trans     &trans     &trans     &trans     &trans
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &kp K_EJECT
             >;
 
